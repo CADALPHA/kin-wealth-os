@@ -137,11 +137,11 @@ export function AppSidebar() {
   const primaryItems = useMemo(() => {
     const urls = new Set([
       "/dashboard",
+      "/charts",
       "/portfolio",
-      "/expenses",
       "/income",
+      "/expenses",
       "/goals",
-      "/settings",
     ]);
     return sections.flatMap((section) => section.items).filter((item) => urls.has(item.url));
   }, []);
@@ -153,7 +153,7 @@ export function AppSidebar() {
       onMouseLeave={handleMouseLeave}
     >
 
-      <SidebarHeader className="border-b border-sidebar-border">
+      <SidebarHeader className="border-b border-sidebar-border/80">
         <div className="flex items-center gap-3 px-3 py-3">
           <img
             src={logo}
@@ -174,8 +174,8 @@ export function AppSidebar() {
           )}
         </div>
         {!collapsed && (
-          <div className="px-3 pb-4">
-            <div className="glass-panel animate-panel-in p-3.5">
+          <div className="px-3 pb-3">
+            <div className="glass-panel animate-panel-in p-3">
               <div className="flex items-center gap-3">
                 {avatarUrl ? (
                   <img
@@ -193,14 +193,9 @@ export function AppSidebar() {
                   <div className="truncate text-[11px] text-muted-foreground">{profession}</div>
                 </div>
               </div>
-              <div className="mt-3 rounded-xl border border-[color:var(--glass-border)] bg-background/25 px-3 py-2.5 backdrop-blur-sm">
-                <div className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                  Workspace
-                </div>
-                <div className="mt-1 truncate text-sm text-sidebar-foreground">{memberLabel}</div>
-                <div className="mt-2 text-xs text-muted-foreground">
-                  Start from the dashboard, then dive into the areas that need attention.
-                </div>
+              <div className="mt-3 flex items-center justify-between gap-2 border-t border-sidebar-border/70 pt-3">
+                <span className="truncate text-xs text-muted-foreground">{memberLabel}</span>
+                <span className="h-2 w-2 shrink-0 rounded-full bg-[color:var(--emerald)]" aria-label="Workspace active" />
               </div>
             </div>
           </div>
@@ -216,7 +211,7 @@ export function AppSidebar() {
                   const active = pathname === item.url;
                   return (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild isActive={active}>
+                      <SidebarMenuButton asChild isActive={active} tooltip={item.title}>
                         <Link
                           to={item.url}
                           className="flex items-center gap-2"

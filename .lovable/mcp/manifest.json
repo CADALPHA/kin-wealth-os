@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "sdk_version": "0.26.1",
+  "sdk_version": "3.4.0",
   "path": "/mcp",
   "auth": {
     "type": "oauth",
@@ -26,9 +26,10 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
-          "properties": {}
+          "properties": {},
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -42,7 +43,7 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "category": {
@@ -55,7 +56,8 @@
               "minimum": -9007199254740991,
               "maximum": 9007199254740991
             }
-          }
+          },
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -69,7 +71,7 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "from": {
@@ -90,7 +92,8 @@
               "minimum": -9007199254740991,
               "maximum": 9007199254740991
             }
-          }
+          },
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -104,9 +107,10 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
-          "properties": {}
+          "properties": {},
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -120,7 +124,7 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "amount": {
@@ -152,7 +156,8 @@
           "required": [
             "amount",
             "category"
-          ]
+          ],
+          "additionalProperties": false
         },
         "outputSchema": null
       },
@@ -166,7 +171,7 @@
           "openWorldHint": false
         },
         "inputSchema": {
-          "$schema": "http://json-schema.org/draft-07/schema#",
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
           "type": "object",
           "properties": {
             "amount": {
@@ -187,7 +192,8 @@
           "required": [
             "amount",
             "source"
-          ]
+          ],
+          "additionalProperties": false
         },
         "outputSchema": null
       }
