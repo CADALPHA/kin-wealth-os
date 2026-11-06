@@ -70,6 +70,20 @@ describe("bento layout coverage", () => {
   it("wraps app content in the ambient gradient mesh", () => {
     expect(read("src/components/AppShell.tsx")).toContain("gradient-mesh");
   });
+
+  it("keeps the signed-in frame oriented around the current page and Aria", () => {
+    const shell = read("src/components/AppShell.tsx");
+    expect(shell).toContain("useRouterState");
+    expect(shell).toContain("Ask Aria");
+    expect(shell).toContain("/settings");
+  });
+
+  it("puts net worth before secondary dashboard metrics", () => {
+    const dashboard = read(`${ROUTES_DIR}/dashboard.tsx`);
+    expect(dashboard.indexOf("label: \"Net worth\"")).toBeGreaterThanOrEqual(0);
+    expect(dashboard).toContain("text-[color:var(--gold)] sm:text-4xl");
+    expect(dashboard).not.toContain("Command Center");
+  });
 });
 
 describe("CTA + microcopy contract", () => {

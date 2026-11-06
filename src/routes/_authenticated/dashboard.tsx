@@ -279,14 +279,14 @@ function Dashboard() {
   const recent = i.slice(0, 5);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <SectionHeading
-        title="Command Center"
-        sub="Your wealth, at a glance."
+        title="Overview"
+        sub="Your financial picture, in one place."
       />
 
       <div className="bento-grid grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)]">
-        <div className="fintech-card relative overflow-hidden p-6 sm:p-7">
+        <div className="fintech-card relative overflow-hidden p-5 sm:p-7">
           <div
             className="pointer-events-none absolute -top-24 -right-24 -z-10 h-64 w-64 rounded-full blur-3xl"
             style={{ background: "color-mix(in oklab, var(--gold) 12%, transparent)" }}
@@ -316,8 +316,12 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <OverviewStat label="Net worth" value={fmtKES(nw)} helper="Your assets minus debt" />
+          <div className="mt-6 grid gap-3 sm:grid-cols-[1.25fr_1fr_1fr]">
+            <div className="rounded-2xl border border-[color:var(--glass-border)] bg-background/45 p-4 backdrop-blur-sm">
+              <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Net worth</div>
+              <div className="mt-1 metric-value text-3xl font-semibold text-[color:var(--gold)] sm:text-4xl">{fmtKES(nw)}</div>
+              <div className="mt-1 text-xs text-muted-foreground">Assets minus debt</div>
+            </div>
             <OverviewStat
               label="Available cash"
               value={fmtKES(availableCash)}
@@ -599,18 +603,12 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="bento-grid grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div className="bento-grid grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         <MetricCard
           label="Total Assets"
           value={fmtKES(total)}
           sub={<span>Invested: {fmtKES(invested)}</span>}
           icon={<Wallet className="h-4 w-4" />}
-        />
-        <MetricCard
-          label="Net Worth"
-          value={fmtKES(nw)}
-          sub={`Invest ${fmtKES(total)} + Items ${fmtKES(personalVal)} − Debt ${fmtKES(debt)}`}
-          icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
           label="ROI"
