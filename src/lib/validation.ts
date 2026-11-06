@@ -38,21 +38,21 @@ export function validateAmount(amount: unknown): { valid: boolean; error?: strin
   if (amount === null || amount === undefined || amount === "") {
     return { valid: false, error: "Amount is required" };
   }
-  
+
   const num = Number(amount);
-  
+
   if (isNaN(num)) {
     return { valid: false, error: "Amount must be a valid number" };
   }
-  
+
   if (num < 0) {
     return { valid: false, error: "Amount cannot be negative" };
   }
-  
+
   if (!isFinite(num)) {
     return { valid: false, error: "Amount must be a finite number" };
   }
-  
+
   return { valid: true };
 }
 
@@ -81,7 +81,7 @@ export function sanitizeErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     // Don't expose internal error details to the UI
     const message = error.message.toLowerCase();
-    
+
     if (message.includes("credentials") || message.includes("auth")) {
       return "Authentication failed. Please check your credentials.";
     }
@@ -92,6 +92,6 @@ export function sanitizeErrorMessage(error: unknown): string {
       return "This entry already exists. Please use different information.";
     }
   }
-  
+
   return "An error occurred. Please try again.";
 }
